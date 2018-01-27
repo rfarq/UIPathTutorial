@@ -58,45 +58,55 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="MASTER Flowchart" sap2010:WorkflowViewState.IdRef="Flowchart_1" StartNode="{x:Reference __ReferenceID4}">
-    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-      <Flowchart DisplayName="Flowchart leap year" sap2010:WorkflowViewState.IdRef="Flowchart_2">
-        <Flowchart.Variables>
-          <Variable x:TypeArguments="x:Int32" Default="2013" Name="year" />
-        </Flowchart.Variables>
-        <Flowchart.StartNode>
+  <Flowchart DisplayName="MASTER Flowchart" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <Flowchart DisplayName="Flowchart leap year" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="x:Int32" Default="2013" Name="year" />
+          </Flowchart.Variables>
+          <Flowchart.StartNode>
+            <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+              <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter a year">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:Int32">[year]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <FlowStep.Next>
+                <FlowDecision x:Name="__ReferenceID0" Condition="[year mod 4 = 0]" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message leap year" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="This one is" TopMost="True" />
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message not a leap year" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="This one isn't" TopMost="True" />
+                    </FlowStep>
+                  </FlowDecision.False>
+                </FlowDecision>
+              </FlowStep.Next>
+            </FlowStep>
+          </Flowchart.StartNode>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
           <x:Reference>__ReferenceID3</x:Reference>
-        </Flowchart.StartNode>
-        <FlowDecision x:Name="__ReferenceID2" Condition="[year mod 4 = 0]" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-          <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="This one is" TopMost="True" />
-            </FlowStep>
-          </FlowDecision.True>
-          <FlowDecision.False>
-            <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_4">
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="This one isn't" TopMost="True" />
-            </FlowStep>
-          </FlowDecision.False>
-        </FlowDecision>
-        <x:Reference>__ReferenceID0</x:Reference>
-        <x:Reference>__ReferenceID1</x:Reference>
-        <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-          <ui:InputDialog Options="{x:Null}" Title="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter a year">
-            <ui:InputDialog.Result>
-              <OutArgument x:TypeArguments="x:Int32">[year]</OutArgument>
-            </ui:InputDialog.Result>
-          </ui:InputDialog>
-          <FlowStep.Next>
-            <x:Reference>__ReferenceID2</x:Reference>
-          </FlowStep.Next>
-        </FlowStep>
-      </Flowchart>
-    </FlowStep>
-    <sads:DebugSymbol.Symbol>dzVGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFRlc3RQcm9qZWN0XE1haW4ueGFtbAs9A2EPAgEBPwdeEwIBAkE3QT0CAQNVC1kcAgEKRjlGSwIBCE4PTsYBAgEGSQ9JwwECAQRVowFVuAECAQ1XNlc8AgELTqQBTrQBAgEHSaQBSbEBAgEF</sads:DebugSymbol.Symbol>
+        </Flowchart>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <sads:DebugSymbol.Symbol>dzJGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXE1haW4ueGFtbAs9A2QPAgEBQAlfFQIBAkI5Qj8CAQNGD0ogAgEKTEFMUwIBCFQXVNoBAgEGTxdP0QECAQRGpwFGvAECAQ1IOkhAAgELVLgBVMgBAgEHT7IBT78BAgEF</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -135,13 +145,6 @@
             <av:Size x:Key="ShapeSize">70,87</av:Size>
             <av:PointCollection x:Key="TrueConnector">265,250 100,250 100,344.5</av:PointCollection>
             <av:PointCollection x:Key="FalseConnector">335,250 480,250 480,334.5</av:PointCollection>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="200,51">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
