@@ -60,48 +60,28 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Lesson03" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-        <Sequence DisplayName="Data tables" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+        <Sequence DisplayName="Nickname generator" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <Sequence.Variables>
-            <Variable x:TypeArguments="sd:DataTable" Name="sampleData" />
-            <Variable x:TypeArguments="sd:DataRow[]" Name="filteredRows" />
+            <Variable x:TypeArguments="x:String" Name="firstName" />
+            <Variable x:TypeArguments="x:String" Name="lastName" />
           </Sequence.Variables>
-          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[sampleData]" Delimitator="Comma" DisplayName="Read CSV" FilePath="sampleData.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[sampleData.Rows(0)(&quot;Name&quot;).ToString]" />
-          <ui:ForEachRow DataTable="[sampleData]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-            <ui:ForEachRow.Body>
-              <ActivityAction x:TypeArguments="sd:DataRow">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_9" />
-              </ActivityAction>
-            </ui:ForEachRow.Body>
-          </ui:ForEachRow>
-          <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
-            <Assign.To>
-              <OutArgument x:TypeArguments="sd:DataRow[]">[filteredRows]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataRow[]">[sampleData.Select("Age&lt;40 and Income&gt;'40k'")]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:ForEach x:TypeArguments="sd:DataRow" DisplayName="For each" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[filteredRows]">
-            <ui:ForEach.Body>
-              <ActivityAction x:TypeArguments="sd:DataRow">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[row(&quot;Name&quot;).ToString + &quot; &quot; + row(&quot;Age&quot;).ToString + &quot; &quot; + row(&quot;Income&quot;).ToString]" />
-                </Sequence>
-              </ActivityAction>
-            </ui:ForEach.Body>
-          </ui:ForEach>
+          <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter your first name" Title="First name">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">[firstName]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+          <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Please enter your last name" Title="Last name">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">[lastName]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+          <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="Your nickname" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[firstName.ToUpper().Substring(0,3)+ lastName.ToLower().Substring(0,3)]" TopMost="True" />
         </Sequence>
       </FlowStep>
     </Flowchart.StartNode>
@@ -194,42 +174,65 @@
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[String.Format(&quot;Hello {0} {1:MMMM yyyy}&quot;, world, Now)]" TopMost="True" />
       </Sequence>
     </FlowStep>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_5">
+      <Sequence DisplayName="Data tables" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="sampleData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="filteredRows" />
+        </Sequence.Variables>
+        <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[sampleData]" Delimitator="Comma" DisplayName="Read CSV" FilePath="sampleData.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[sampleData.Rows(0)(&quot;Name&quot;).ToString]" />
+        <ui:ForEachRow DataTable="[sampleData]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_9" />
+            </ActivityAction>
+          </ui:ForEachRow.Body>
+        </ui:ForEachRow>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[filteredRows]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[sampleData.Select("Age&lt;40 and Income&gt;'40k'")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ForEach x:TypeArguments="sd:DataRow" DisplayName="For each" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[filteredRows]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[row(&quot;Name&quot;).ToString + &quot; &quot; + row(&quot;Age&quot;).ToString + &quot; &quot; + row(&quot;Income&quot;).ToString]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+    </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzZGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXExlc3NvbjAzLnhhbWwSQQPHAQ8CAQFECWkUAgECSQtJvwECARJKC0qWAQIBEEsLVBsCAQxVC1wUAgEIXQtoGAIBA0k5SUcCARRJfEmMAQIBE0piSpMBAgERSyRLMgIBDlERUV0CAQ1aOlpuAgELVztXSQIBCV2AAV2QAQIBB2MRZRwCAQRkE2TyAQIBBWRqZO8BAgEG</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzZGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXExlc3NvbjAzLnhhbWwNQgPbAQ8CAQFFCVUUAgECSgtOHAIBDU8LUxwCAQhUC1SAAgIBA0qSAUqwAQIBEUw3TEICAQ9KtwFKwwECAQ5PkgFPrwECAQxRN1FBAgEKT7YBT8EBAgEJVEdUVgIBB1SlAVTuAQIBBA==</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="ReadCsvFile_1" sap:VirtualizedContainerService.HintSize="314,59" />
-      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="314,61" />
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="200,99">
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="314,92" />
+      <sap2010:ViewStateData Id="InputDialog_2" sap:VirtualizedContainerService.HintSize="314,92" />
+      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="336,447">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="314,247" />
-      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="314,60" />
-      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,61" />
-      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="232,185">
+      <sap2010:ViewStateData Id="FlowStep_6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="314,319" />
-      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="336,1030">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_5">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">310,444.02</av:Point>
+            <av:Point x:Key="ShapeLocation">0,474.02</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -327,17 +330,52 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadCsvFile_1" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="200,99">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="314,247" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="232,185">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="314,319" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">310,444.02</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 540,107.5 540,414.02 410,414.02 410,444.02</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 0,107.5 0,555.02 230,555.02 230,499.52 200,499.52</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Lesson03_1" sap:VirtualizedContainerService.HintSize="654,756" />
+      <sap2010:ViewStateData Id="Lesson03_1" sap:VirtualizedContainerService.HintSize="654,716" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
