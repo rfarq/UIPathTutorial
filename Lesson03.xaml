@@ -65,23 +65,34 @@
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Lesson03" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_6">
-        <Sequence DisplayName="Nickname generator" sap2010:WorkflowViewState.IdRef="Sequence_11">
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+        <Sequence DisplayName="Filtering random words" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="firstName" />
-            <Variable x:TypeArguments="x:String" Name="lastName" />
+            <Variable x:TypeArguments="sd:DataTable" Name="randomWords" />
+            <Variable x:TypeArguments="x:Int32" Default="5" Name="threshold" />
+            <Variable x:TypeArguments="sd:DataRow[]" Name="filteredRows" />
           </Sequence.Variables>
-          <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter your first name" Title="First name">
-            <ui:InputDialog.Result>
-              <OutArgument x:TypeArguments="x:String">[firstName]</OutArgument>
-            </ui:InputDialog.Result>
-          </ui:InputDialog>
-          <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Please enter your last name" Title="Last name">
-            <ui:InputDialog.Result>
-              <OutArgument x:TypeArguments="x:String">[lastName]</OutArgument>
-            </ui:InputDialog.Result>
-          </ui:InputDialog>
-          <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="Your nickname" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[firstName.ToUpper().Substring(0,3)+ lastName.ToLower().Substring(0,3)]" TopMost="True" />
+          <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[randomWords]" Delimitator="Comma" DisplayName="Read CSV" FilePath="Random Words.csv" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataRow[]">[filteredRows]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataRow[]">[randomWords.Select("Suspicion &gt; 5")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="sd:DataRow" DisplayName="For each" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[filteredRows]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[row(&quot;Word&quot;).ToString]" />
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
         </Sequence>
       </FlowStep>
     </Flowchart.StartNode>
@@ -214,25 +225,52 @@
         </ui:ForEach>
       </Sequence>
     </FlowStep>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_6">
+      <Sequence DisplayName="Nickname generator" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="firstName" />
+          <Variable x:TypeArguments="x:String" Name="lastName" />
+        </Sequence.Variables>
+        <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter your first name" Title="First name">
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:String">[firstName]</OutArgument>
+          </ui:InputDialog.Result>
+        </ui:InputDialog>
+        <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Please enter your last name" Title="Last name">
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:String">[lastName]</OutArgument>
+          </ui:InputDialog.Result>
+        </ui:InputDialog>
+        <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="Your nickname" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[firstName.ToUpper().Substring(0,3)+ lastName.ToLower().Substring(0,3)]" TopMost="True" />
+      </Sequence>
+    </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzZGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXExlc3NvbjAzLnhhbWwNQgPbAQ8CAQFFCVUUAgECSgtOHAIBDU8LUxwCAQhUC1SAAgIBA0qSAUqwAQIBEUw3TEICAQ9KtwFKwwECAQ5PkgFPrwECAQxRN1FBAgEKT7YBT8EBAgEJVEdUVgIBB1SlAVTuAQIBBA==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzZGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXExlc3NvbjAzLnhhbWwOQgP5AQ8CAQFFCWAUAgECSDlIPAIBA0sLS8IBAgENTAtTFAIBCVQLXxgCAQRLOUtIAgEPS31LjwECAQ5ROlFiAgEMTjtOSQIBClSAAVSQAQIBCFoRXBwCAQVbE1uPAQIBBltqW4wBAgEH</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="314,92" />
-      <sap2010:ViewStateData Id="InputDialog_2" sap:VirtualizedContainerService.HintSize="314,92" />
-      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="314,59" />
-      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="336,447">
+      <sap2010:ViewStateData Id="ReadCsvFile_2" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="232,185">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_6">
+      <sap2010:ViewStateData Id="ForEach`1_8" sap:VirtualizedContainerService.HintSize="314,319" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">0,474.02</av:Point>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">280,524.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -365,13 +403,31 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="314,92" />
+      <sap2010:ViewStateData Id="InputDialog_2" sap:VirtualizedContainerService.HintSize="314,92" />
+      <sap2010:ViewStateData Id="MessageBox_5" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">0,474.02</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 0,107.5 0,555.02 230,555.02 230,499.52 200,499.52</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 380,107.5 380,524.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
