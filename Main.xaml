@@ -70,19 +70,12 @@
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="MASTER Flowchart" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_28">
-        <Sequence DisplayName="Sum vs Concatenation" sap2010:WorkflowViewState.IdRef="Sequence_12">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;123&quot;]" Name="A" />
-            <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;456&quot;]" Name="B" />
-            <Variable x:TypeArguments="ui:GenericValue" Default="[123]" Name="C" />
-            <Variable x:TypeArguments="ui:GenericValue" Default="[456]" Name="D" />
-          </Sequence.Variables>
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[A + B]" />
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[C + D]" />
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[A + C]" />
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[C + A]" />
-        </Sequence>
+      <FlowStep x:Name="__ReferenceID22" sap2010:WorkflowViewState.IdRef="FlowStep_29">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke lesson 3" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Lesson03.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
       </FlowStep>
     </Flowchart.StartNode>
     <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_2">
@@ -419,26 +412,36 @@
         <x:Reference>__ReferenceID21</x:Reference>
       </Flowchart>
     </FlowStep>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_28">
+      <Sequence DisplayName="Sum vs Concatenation" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;123&quot;]" Name="A" />
+          <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;456&quot;]" Name="B" />
+          <Variable x:TypeArguments="ui:GenericValue" Default="[123]" Name="C" />
+          <Variable x:TypeArguments="ui:GenericValue" Default="[456]" Name="D" />
+        </Sequence.Variables>
+        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[A + B]" />
+        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[C + D]" />
+        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[A + C]" />
+        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[C + A]" />
+      </Sequence>
+    </FlowStep>
     <x:Reference>__ReferenceID22</x:Reference>
-    <sads:DebugSymbol.Symbol>dzJGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXE1haW4ueGFtbBABSgFOAQMBYwFmAQJHA6gDDwIBAUoJVRQCAQJMQUxUAgEGTUFNVAIBBU5BTkgCAQRPQU9IAgEDUQtRbgIBDVILUm4CAQtTC1NuAgEJVAtUbgIBB1FiUWsCAQ5SYlJrAgEMU2JTawIBClRiVGsCAQg=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzJGOlxVc2Vyc1xyaWNoYVxEb2N1bWVudHNcVWlQYXRoXFR1dG9yaWFsXE1haW4ueGFtbAUBSgFOAQMBYwFmAQJHA68DDwIBAUoJTiECAQJKsAFKvwECAQM=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,61" />
-      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="210,61" />
-      <sap2010:ViewStateData Id="WriteLine_5" sap:VirtualizedContainerService.HintSize="210,61" />
-      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="210,61" />
-      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="232,488">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_28">
+      <sap2010:ViewStateData Id="FlowStep_29">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">370,544.5</av:Point>
+            <av:Point x:Key="ShapeLocation">20,534.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -515,7 +518,7 @@
       <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">10,124.5</av:Point>
+            <av:Point x:Key="ShapeLocation">80,104.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -875,7 +878,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314,87">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -943,13 +946,32 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="WriteLine_5" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_28">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">370,544.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="687,701">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 590,107.5 590,514.5 470,514.5 470,544.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,424.02 250,424.02 250,560 220,560</av:PointCollection>
             <x:Double x:Key="Width">673</x:Double>
             <x:Double x:Key="Height">665</x:Double>
           </scg:Dictionary>
