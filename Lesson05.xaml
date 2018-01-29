@@ -59,38 +59,99 @@
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Lesson05" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
-        <Sequence DisplayName="Lesson 5 Practice 1 - ebay laptops" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-          </Sequence.Variables>
-          <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" Url="https://www.ebay.com/sch/i.html?_odkw=computer&amp;_osacat=0&amp;_from=R40&amp;_trksid=p2045573.m570.l1313.TR12.TRC2.A0.H0.Xlaptop.TRS0&amp;_nkw=laptop&amp;_sacat=0">
-            <ui:OpenBrowser.Body>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <Sequence DisplayName="Lesson 5 Practice 2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'notepad.exe lorem'" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="b7d63d29449618db10f0b86ac54b0509" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;">
+            <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7" />
-              </ActivityAction>
-            </ui:OpenBrowser.Body>
-          </ui:OpenBrowser>
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'LaptopeBay Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="724b3ed0de1a867bc49620e66502db73" Selector="&lt;html title='laptop | eBay' /&gt;">
-            <ui:BrowserScope.Body>
-              <ActivityAction x:TypeArguments="x:Object">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'UL  ListViewInner'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;/row&gt;&lt;column attr='text' name='Name' exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;webctrl class='lvtitle' idx='1' tag='h3' /&gt;&lt;webctrl class='vip' idx='1' tag='a' /&gt;&lt;/column&gt;&lt;column attr='text' name='price' exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;webctrl tag='ul' /&gt;&lt;webctrl class='lvprice prc' idx='1' tag='li' /&gt;&lt;webctrl class='bold' idx='1' tag='span' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='2 Pagination for search results' parentid='Pagination' tag='A' /&gt;">
-                    <ui:ExtractData.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7c90613a6d7611b0ace83d9573cdd1ba" Selector="&lt;webctrl id='ListViewInner' tag='UL' /&gt;" WaitForReady="COMPLETE" />
-                    </ui:ExtractData.Target>
-                  </ui:ExtractData>
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="ui:UiElement" Name="aTextRegion" />
+                  </Sequence.Variables>
+                  <ui:Highlight Color="255, 215, 0" DisplayName="Highlight 'editable text'" HighlightTime="1000" sap2010:WorkflowViewState.IdRef="Highlight_1">
+                    <ui:Highlight.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="05777bc91f2070b3b72007b24d0a76c8" Selector="&lt;wnd aaname='Text Editor' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Highlight.Target>
+                  </ui:Highlight>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="393591455244bac0e8cc4e1ce78b5b82" Selector="&lt;wnd aaname='Text Editor' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:Highlight Color="255, 215, 0" DisplayName="Highlight 'editable text'" HighlightTime="1000" sap2010:WorkflowViewState.IdRef="Highlight_2">
+                    <ui:Highlight.Target>
+                      <ui:Target Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7644d91e0a6923d5c1f1d50ce890e4c2" Selector="&lt;wnd aaname='Text Editor' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.ClippingRegion>
+                          <ui:Region Rectangle="975, 13, 196, 154" />
+                        </ui:Target.ClippingRegion>
+                      </ui:Target>
+                    </ui:Highlight.Target>
+                  </ui:Highlight>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="67bcb1250fdb8468f0823fe4ffbd09a4" Selector="&lt;wnd aaname='Text Editor' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.ClippingRegion>
+                          <ui:Region Rectangle="823, 15, 222, 186" />
+                        </ui:Target.ClippingRegion>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:WaitUiElementAppear DisplayName="Find Element 'editable text'" FoundElement="[aTextRegion]" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2" WaitActive="False" WaitVisible="False">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="01c137796914e123ef35a9f256053adc" Selector="&lt;wnd aaname='Text Editor' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.ClippingRegion>
+                          <ui:Region Rectangle="35, 19, 218, 180" />
+                        </ui:Target.ClippingRegion>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                  <ui:Highlight Color="255, 215, 0" HighlightTime="1000" sap2010:WorkflowViewState.IdRef="Highlight_3">
+                    <ui:Highlight.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[aTextRegion]" WaitForReady="INTERACTIVE" />
+                    </ui:Highlight.Target>
+                  </ui:Highlight>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[aTextRegion]" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
                 </Sequence>
               </ActivityAction>
-            </ui:BrowserScope.Body>
-          </ui:BrowserScope>
-          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[ExtractDataTable]" Delimitator="Comma" DisplayName="Write CSV" FilePath="laptops.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+            </ui:WindowScope.Body>
+          </ui:WindowScope>
         </Sequence>
       </FlowStep>
     </Flowchart.StartNode>
@@ -124,40 +185,71 @@
         </ui:Click>
       </Sequence>
     </FlowStep>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_3">
+      <Sequence DisplayName="Lesson 5 Practice 1 - ebay laptops" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+        </Sequence.Variables>
+        <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" Url="https://www.ebay.com/sch/i.html?_odkw=computer&amp;_osacat=0&amp;_from=R40&amp;_trksid=p2045573.m570.l1313.TR12.TRC2.A0.H0.Xlaptop.TRS0&amp;_nkw=laptop&amp;_sacat=0">
+          <ui:OpenBrowser.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7" />
+            </ActivityAction>
+          </ui:OpenBrowser.Body>
+        </ui:OpenBrowser>
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'LaptopeBay Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="724b3ed0de1a867bc49620e66502db73" Selector="&lt;html title='laptop | eBay' /&gt;">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'UL  ListViewInner'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;/row&gt;&lt;column attr='text' name='Name' exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;webctrl class='lvtitle' idx='1' tag='h3' /&gt;&lt;webctrl class='vip' idx='1' tag='a' /&gt;&lt;/column&gt;&lt;column attr='text' name='price' exact='1'&gt;&lt;webctrl class='sresult lvresult clearfix li shic' tag='li' /&gt;&lt;webctrl tag='ul' /&gt;&lt;webctrl class='lvprice prc' idx='1' tag='li' /&gt;&lt;webctrl class='bold' idx='1' tag='span' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='2 Pagination for search results' parentid='Pagination' tag='A' /&gt;">
+                  <ui:ExtractData.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7c90613a6d7611b0ace83d9573cdd1ba" Selector="&lt;webctrl id='ListViewInner' tag='UL' /&gt;" WaitForReady="COMPLETE" />
+                  </ui:ExtractData.Target>
+                </ui:ExtractData>
+              </Sequence>
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+        <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[ExtractDataTable]" Delimitator="Comma" DisplayName="Write CSV" FilePath="laptops.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+      </Sequence>
+    </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDUueGFtbBQ8A4EBDwIBAT8JXhQCAQJBPkFbAgEDQwtMHAIBFE0LXB0CAQhdC13XAQIBBEPBAUPnAgIBFkkRSVsCARVNowJNyQICARNTEVkcAgEJXUxdYAIBBl2WAV2jAQIBBVQTWCQCAQpU7gZU8wYCARJWpgFW1QECARFUbVRyAgEQVDNUOQIBD1REVFgCAQ1UhQdU3wcCAQxUvQFUqgYCAQs=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDUueGFtbBQ8A+ABDwIBAT8JmwEUAgECQAuaARwCAQNAmAJA4gICARdGEZcBHAIBBEoTTiICARVPE10eAgETXhNmIgIBEWcTeR4CAQ96E4IBLAIBC4MBE4cBIgIBCIgBE5YBHgIBBUymAUyLAgIBFlumAVuLAgIBFGCMAWDxAQIBEnOMAXPxAQIBEHpjenICAQ18jAF88QECAQyFAW2FAXwCAQmUAW2UAXwCAQY=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="200,100">
+      <sap2010:ViewStateData Id="Highlight_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Highlight_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="WaitUiElementAppear_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Highlight_3" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,1030">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_2" sap:VirtualizedContainerService.HintSize="414,199" />
-      <sap2010:ViewStateData Id="ExtractData_1" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,230">
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="414,1176" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="436,1300">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,376" />
-      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="414,87" />
-      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="436,866">
+      <sap2010:ViewStateData Id="FlowStep_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_3">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">120,304.02</av:Point>
+            <av:Point x:Key="ShapeLocation">370,184</av:Point>
             <av:Size x:Key="ShapeSize">200,52</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -181,13 +273,46 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="200,100">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenBrowser_2" sap:VirtualizedContainerService.HintSize="414,199" />
+      <sap2010:ViewStateData Id="ExtractData_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,230">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,376" />
+      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="414,87" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="200,52">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">120,304.02</av:Point>
+            <av:Size x:Key="ShapeSize">200,52</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,182 100,182 100,274.02 220,274.02 220,304.02</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,210 370,210</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
