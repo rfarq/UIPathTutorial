@@ -64,6 +64,7 @@
           <Sequence.Variables>
             <Variable x:TypeArguments="ui:GenericValue" Name="Span1" />
             <Variable x:TypeArguments="ui:GenericValue" Name="Span2" />
+            <Variable x:TypeArguments="ui:GenericValue" Name="diff" />
           </Sequence.Variables>
           <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'YahooFina Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="0d6088902d864755a6c748f427c38015" Selector="&lt;html title='Yahoo Finance - Business finance, stock market, quotes, news' /&gt;">
             <ui:BrowserScope.Body>
@@ -113,7 +114,22 @@
               </ActivityAction>
             </ui:BrowserScope.Body>
           </ui:BrowserScope>
-          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[0 + Span2 - Span1]" />
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="ui:GenericValue">[diff]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="ui:GenericValue">[0 + Span2 - Span1]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[diff &gt; 8]" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;The stock has dropped &quot; + diff.ToString + &quot; points!&quot;]" TopMost="True" />
+            </If.Then>
+            <If.Else>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="The stock is fine" TopMost="True" />
+            </If.Else>
+          </If>
           <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'TSLA34285 Ieframe'" sap2010:WorkflowViewState.IdRef="WindowScope_8" InformativeScreenshot="e26d613439813cfcaba2814c72ebfe9f" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='TSLA 342.85 5.21 1.54% : Tesla, Inc. - Yahoo Finance - Internet *' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
@@ -337,7 +353,7 @@
       </Sequence>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbCM8A9UCDwIBAT8JkAEUAgECRAtzHQIBEHQLdHoCAQ51C48BHAIBA0SiAkT3AgIBJUoRcBwCARF0YnR3AgEPdZgCdZIDAgENexGMARwCAQRLE08hAgEiUBNXHgIBHlgTXx4CARpgE2chAgEWaBNvIQIBEnwTgwEeAgEJhAETiwEeAgEFTaYBTc4BAgEkS6MCS6kCAgEjVaYBVdkBAgEhUj9SQwIBIFIyUjYCAR9dpgFd7wECAR1aP1pDAgEcWjJaNgIBG2VGZU0CARdipgFigAICARltRm1NAgETaqYBaoACAgEVgQGmAYEBgAICAQx+P35DAgELfjJ+NgIBCokBpgGJAYACAgEIhgE/hgFDAgEHhgEyhgE2AgEG</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbCo8A+UCDwIBAT8JoAEUAgECRQt0HQIBGnULfBQCARR9C4QBEAIBDoUBC58BHAIBA0WiAkX3AgIBL0sRcRwCARt6PXpQAgEXdz53RAIBFX0ZfSgCAQ9/D3+DAgIBEoIBD4IByQECARCFAZgChQGSAwIBDYsBEZwBHAIBBEwTUCECASxRE1geAgEoWRNgHgIBJGETaCECASBpE3AhAgEcf6QBf/EBAgETggGkAYIBtwECARGMAROTAR4CAQmUARObAR4CAQVOpgFOzgECAS5MowJMqQICAS1WpgFW2QECAStTP1NDAgEqUzJTNgIBKV6mAV7vAQIBJ1s/W0MCASZbMls2AgElZkZmTQIBIWOmAWOAAgIBI25Gbk0CAR1rpgFrgAICAR+RAaYBkQGAAgIBDI4BP44BQwIBC44BMo4BNgIBCpkBpgGZAYACAgEIlgE/lgFDAgEHlgEylgE2AgEG</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -353,8 +369,11 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_2" sap:VirtualizedContainerService.HintSize="414,988" />
-      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="414,62" />
+      <sap2010:ViewStateData Id="BrowserScope_2" sap:VirtualizedContainerService.HintSize="653,988" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="653,60" />
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="653,210" />
       <sap2010:ViewStateData Id="Click_36" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Click_37" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="336,376">
@@ -364,8 +383,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WindowScope_8" sap:VirtualizedContainerService.HintSize="414,522" />
-      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="200,52">
+      <sap2010:ViewStateData Id="WindowScope_8" sap:VirtualizedContainerService.HintSize="653,522" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="675,2024">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
