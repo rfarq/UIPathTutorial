@@ -58,7 +58,7 @@
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
         <Sequence DisplayName="Basic recording - Notepad" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'editable text'" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="We shape our tools and our tools shape us.">
+          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'editable text'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="We shape our tools and our tools shape us.">
             <ui:TypeInto.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0070e33c0bc5c5ee7460a87d7bb51ad1" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='Untitled - Notepad' /&gt;&lt;wnd aaname='Horizontal' cls='Edit' /&gt;&lt;ctrl name='Text Editor' role='editable text' /&gt;" WaitForReady="INTERACTIVE" />
             </ui:TypeInto.Target>
@@ -79,7 +79,7 @@
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5b3895e217d841308e257c9938e8f146" Selector="&lt;wnd app='notepad.exe' cls='#32768' /&gt;&lt;ctrl name='Format' role='popup menu' /&gt;&lt;ctrl automationid='33' /&gt;" WaitForReady="INTERACTIVE" />
             </ui:Click.Target>
           </ui:Click>
-          <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select item 'list  Font:'" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="Constantia">
+          <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select item 'list  Font:'" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="Fixedsys">
             <ui:SelectItem.Items>
               <scg:List x:TypeArguments="x:String" Capacity="64">
                 <x:String>Arial</x:String>
@@ -154,7 +154,7 @@
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbBQ5A54BDwIBATwJmQEUAgECPQtBGQIBEkILSRYCAQ5KC1EWAgEKUguQARsCAQeRAQuYARYCAQM/ngE/ygICARQ9pQI90QICARNHngFH5QICARFEN0Q7AgEQRCpELgIBD0+eAU+aAgIBDUw3TDsCAQxMKkwuAgELUr4BUsoBAgEIjgGeAY4BtgICAQmWAZ4BlgH8AQIBBpMBN5MBOwIBBZMBKpMBLgIBBA==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbBQ5A54BDwIBATwJmQEUAgECPQtBGQIBEkILSRYCAQ5KC1EWAgEKUguQARsCAQeRAQuYARYCAQM/ngE/ygICARQ9pAI90AICARNHngFH5QICARFEN0Q7AgEQRCpELgIBD0+eAU+aAgIBDUw3TDsCAQxMKkwuAgELUr4BUsgBAgEIjgGeAY4BtgICAQmWAZ4BlgH8AQIBBpMBN5MBOwIBBZMBKpMBLgIBBA==</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
