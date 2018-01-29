@@ -130,7 +130,7 @@
               <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="The stock is fine" TopMost="True" />
             </If.Else>
           </If>
-          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'TSLA34285 Ieframe'" sap2010:WorkflowViewState.IdRef="WindowScope_8" InformativeScreenshot="e26d613439813cfcaba2814c72ebfe9f" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='TSLA 342.85 5.21 1.54% : Tesla, Inc. - Yahoo Finance - Internet *' /&gt;">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'TSLA34285 Ieframe'" sap2010:WorkflowViewState.IdRef="WindowScope_8" InformativeScreenshot="e26d613439813cfcaba2814c72ebfe9f" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' omit:title='TSLA 342.85 5.21 1.54% : Tesla, Inc. - Yahoo Finance - Internet *' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
@@ -353,7 +353,7 @@
       </Sequence>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbCo8A+UCDwIBAT8JoAEUAgECRQt0HQIBGnULfBQCARR9C4QBEAIBDoUBC58BHAIBA0WiAkX3AgIBL0sRcRwCARt6PXpQAgEXdz53RAIBFX0ZfSgCAQ9/D3+DAgIBEoIBD4IByQECARCFAZgChQGSAwIBDYsBEZwBHAIBBEwTUCECASxRE1geAgEoWRNgHgIBJGETaCECASBpE3AhAgEcf6QBf/EBAgETggGkAYIBtwECARGMAROTAR4CAQmUARObAR4CAQVOpgFOzgECAS5MowJMqQICAS1WpgFW2QECAStTP1NDAgEqUzJTNgIBKV6mAV7vAQIBJ1s/W0MCASZbMls2AgElZkZmTQIBIWOmAWOAAgIBI25Gbk0CAR1rpgFrgAICAR+RAaYBkQGAAgIBDI4BP44BQwIBC44BMo4BNgIBCpkBpgGZAYACAgEIlgE/lgFDAgEHlgEylgE2AgEG</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzhcXE1hY1xIb21lXERvY3VtZW50c1xVaVBhdGhcVUlQYXRoVHV0b3JpYWxcTGVzc29uMDQueGFtbCo8A+UCDwIBAT8JoAEUAgECRQt0HQIBGnULfBQCARR9C4QBEAIBDoUBC58BHAIBA0WiAkX3AgIBL0sRcRwCARt6PXpQAgEXdz53RAIBFX0ZfSgCAQ9/D3+DAgIBEoIBD4IByQECARCFAZgChQGXAwIBDYsBEZwBHAIBBEwTUCECASxRE1geAgEoWRNgHgIBJGETaCECASBpE3AhAgEcf6QBf/EBAgETggGkAYIBtwECARGMAROTAR4CAQmUARObAR4CAQVOpgFOzgECAS5MowJMqQICAS1WpgFW2QECAStTP1NDAgEqUzJTNgIBKV6mAV7vAQIBJ1s/W0MCASZbMls2AgElZkZmTQIBIWOmAWOAAgIBI25Gbk0CAR1rpgFrgAICAR+RAaYBkQGAAgIBDI4BP44BQwIBC44BMo4BNgIBCpkBpgGZAYACAgEIlgE/lgFDAgEHlgEylgE2AgEG</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
